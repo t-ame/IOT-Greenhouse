@@ -1,0 +1,296 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- import plugin script -->
+    <script src='static/Chart.min.js'></script>
+
+    <title>Greenhouse Control Panel</title>
+</head>
+
+<!-- <style>
+div {
+    margin: 70px;
+}
+</style> -->
+
+<body style="margin:10px;padding:0">
+    <center>
+        <h1>Greenhouse Control Panel</h1>
+        <br>
+        <br>
+
+
+
+        <div class = "row">
+
+            <div class="col-md-4">
+                <h4>Temperature Data</h4>
+                <!-- bar chart canvas element -->
+                <canvas id="chart" width="350" height="250"></canvas>
+                <script>
+                    // bar chart data
+                    var barData = {
+                    labels : [{% for item in times %}
+                                  "{{item}}",
+                              {% endfor %}],
+                    datasets : [
+                      {
+                            fillColor: "rgba(255, 77, 77,0.2)",
+                            strokeColor: "rgba(255, 77, 77,1)",
+                            pointColor: "rgba(255, 77, 77,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(255, 77, 77,1)",
+                            bezierCurve : false,
+                            data : [{% for item in temps %}
+                                      {{item}},
+                                    {% endfor %}]
+                      }]
+                    }
+
+                    Chart.defaults.global.animationSteps = 50;
+                    Chart.defaults.global.tooltipYPadding = 16;
+                    Chart.defaults.global.tooltipCornerRadius = 0;
+                    Chart.defaults.global.tooltipTitleFontStyle = "normal";
+                    Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
+                    Chart.defaults.global.animationEasing = "easeOutBounce";
+                    Chart.defaults.global.responsive = false;
+                    Chart.defaults.global.scaleLineColor = "black";
+                    Chart.defaults.global.scaleFontSize = 16;
+
+                    // get bar chart canvas
+                    var mychart = document.getElementById("chart").getContext("2d");
+
+                    steps = 10
+                    max = 10
+                    min = 15
+                    // draw bar chart
+                    var LineChartDemo = new Chart(mychart).Line(barData, {
+                        scaleOverride: true,
+                        scaleSteps: steps,
+                        scaleStepWidth: Math.ceil(max / steps),
+                        scaleStartValue: 20,
+                        scaleShowVerticalLines: true,
+                        scaleShowGridLines : true,
+                        barShowStroke : true,
+                        scaleShowLabels: true,
+                        bezierCurve: false,
+
+                    });
+                </script>
+            
+
+                <h4>Humidity Data</h4>
+                <!-- bar chart canvas element -->
+                <canvas id="chart2" width="350" height="250"></canvas>
+                <script>
+                    // bar chart data
+                    var barData2 = {
+                    labels : [{% for item in times %}
+                                  "{{item}}",
+                              {% endfor %}],
+                    datasets : [
+                      {
+                            fillColor: "rgba(151,187,205,0.2)",
+                            strokeColor: "rgba(151,187,205,1)",
+                            pointColor: "rgba(151,187,205,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(151,187,205,1)",
+                            bezierCurve : false,
+                            data : [{% for item in hums %}
+                                      {{item}},
+                                    {% endfor %}]
+                      }]
+                    }
+
+                    Chart.defaults.global.animationSteps = 50;
+                    Chart.defaults.global.tooltipYPadding = 16;
+                    Chart.defaults.global.tooltipCornerRadius = 0;
+                    Chart.defaults.global.tooltipTitleFontStyle = "normal";
+                    Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
+                    Chart.defaults.global.animationEasing = "easeOutBounce";
+                    Chart.defaults.global.responsive = false;
+                    Chart.defaults.global.scaleLineColor = "black";
+                    Chart.defaults.global.scaleFontSize = 16;
+
+                    // get bar chart canvas
+                    var mychart2 = document.getElementById("chart2").getContext("2d");
+
+                    steps = 10
+                    max = 60
+                    // draw bar chart
+                    var LineChartDemo2 = new Chart(mychart2).Line(barData2, {
+                        scaleOverride: true,
+                        scaleSteps: steps,
+                        scaleStepWidth: Math.ceil(max / steps),
+                        scaleStartValue: 20,
+                        scaleShowVerticalLines: true,
+                        scaleShowGridLines : true,
+                        barShowStroke : true,
+                        scaleShowLabels: true,
+                        bezierCurve: false,
+
+                    });
+                </script>
+            </div>
+
+            <div class="col-md-4">
+                <h4>Light Data</h4>
+                <!-- bar chart canvas element -->
+                <canvas id="chart3" width="350" height="250"></canvas>
+                <script>
+                    // bar chart data
+                    var barData3 = {
+                    labels : [{% for item in times %}
+                                  "{{item}}",
+                              {% endfor %}],
+                    datasets : [
+                      {
+                            fillColor: "rgba(255, 153, 51,0.2)",
+                            strokeColor: "rgba(255, 153, 51,1)",
+                            pointColor: "rgba(255, 153, 51,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(255, 153, 51,1)",
+                            bezierCurve : false,
+                            data : [{% for item in lums %}
+                                      {{item}},
+                                    {% endfor %}]
+                      }]
+                    }
+
+                    Chart.defaults.global.animationSteps = 50;
+                    Chart.defaults.global.tooltipYPadding = 16;
+                    Chart.defaults.global.tooltipCornerRadius = 0;
+                    Chart.defaults.global.tooltipTitleFontStyle = "normal";
+                    Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
+                    Chart.defaults.global.animationEasing = "easeOutBounce";
+                    Chart.defaults.global.responsive = false;
+                    Chart.defaults.global.scaleLineColor = "black";
+                    Chart.defaults.global.scaleFontSize = 16;
+
+                    // get bar chart canvas
+                    var mychart3 = document.getElementById("chart3").getContext("2d");
+
+                    steps = 10
+                    max = 50
+                    // draw bar chart
+                    var LineChartDemo3 = new Chart(mychart3).Line(barData3, {
+                        scaleOverride: true,
+                        scaleSteps: steps,
+                        scaleStepWidth: Math.ceil(max / steps),
+                        scaleStartValue: 0,
+                        scaleShowVerticalLines: true,
+                        scaleShowGridLines : true,
+                        barShowStroke : true,
+                        scaleShowLabels: true,
+                        bezierCurve: false,
+
+                    });
+                </script>
+
+                <h4>Height Data</h4>
+                <!-- bar chart canvas element -->
+                <canvas id="chart4" width="350" height="250"></canvas>
+                <script>
+                    // bar chart data
+                    var barData4 = {
+                    labels : [{% for item in times %}
+                                  "{{item}}",
+                              {% endfor %}],
+                    datasets : [
+                      {
+                            fillColor: "rgba(51, 204, 51,0.2)",
+                            strokeColor: "rgba(51, 204, 51,1)",
+                            pointColor: "rgba(51, 204, 51,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(51, 204, 51,1)",
+                            bezierCurve : false,
+                            data : [{% for item in heights %}
+                                      {{item}},
+                                    {% endfor %}]
+                      }]
+                    }
+
+                    Chart.defaults.global.animationSteps = 50;
+                    Chart.defaults.global.tooltipYPadding = 16;
+                    Chart.defaults.global.tooltipCornerRadius = 0;
+                    Chart.defaults.global.tooltipTitleFontStyle = "normal";
+                    Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
+                    Chart.defaults.global.animationEasing = "easeOutBounce";
+                    Chart.defaults.global.responsive = false;
+                    Chart.defaults.global.scaleLineColor = "black";
+                    Chart.defaults.global.scaleFontSize = 16;
+
+                    // get bar chart canvas
+                    var mychart4 = document.getElementById("chart4").getContext("2d");
+
+                    steps = 10
+                    max = 15
+                    // draw bar chart
+                    var LineChartDemo4 = new Chart(mychart4).Line(barData4, {
+                        scaleOverride: true,
+                        scaleSteps: steps,
+                        scaleStepWidth: Math.ceil(max / steps),
+                        scaleStartValue: 0,
+                        scaleShowVerticalLines: true,
+                        scaleShowGridLines : true,
+                        barShowStroke : true,
+                        scaleShowLabels: true,
+                        bezierCurve: false,
+
+                    });
+                </script>
+            </div> <!-- end of second column -->
+
+            <div class = "col-md-4" style="border: medium solid black"> 
+                <br>
+                <h2>Status and Controls</h2>
+                <br>
+                <form action="/water" method="get" enctype="multipart/form-data" style="width:50%;">
+                    <button type="submit" id="btnsubmit" class="btn btn-default" >Water Plant</button>
+                </form>
+                <br>
+                <form action="/lightOn" method="get" enctype="multipart/form-data" style="width:50%;">
+                    <button type="submit" id="btnsubmit" class="btn btn-default" >Light On</button>
+                </form>
+                <br>
+                <form action="/lightOff" method="get" enctype="multipart/form-data" style="width:50%;">
+                    <button type="submit" id="btnsubmit" class="btn btn-default" >Light Off</button>
+                </form>
+                <br>
+                <p> Current Temperature: {{currtemp}} C</p>
+                <p> Current Light: {{currlum}} lux</p>
+                <p> Current Humidity: {{currhum}}%</p>
+                <p> Current Height: {{currheight}} inches</p>
+                <br>
+<!--                 <form action="/" method="get" enctype="multipart/form-data" style="width:50%;">
+                    <button type="submit" id="btnsubmit" class="btn btn-default" >Refresh</button>
+                </form> -->
+            </div>
+        </div> <!-- end of row 1 -->
+
+
+
+    </center>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script> -->
+
+</body>
+
+</html>
