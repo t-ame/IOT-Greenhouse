@@ -58,9 +58,9 @@ This style guide conforms to IETF's [RFC 2119](http://tools.ietf.org/html/rfc211
 Dot notation is RECOMMENDED over bracket notation for getting and setting properties.
 
 **For example:**
-```objc
+```python
 view.backgroundColor = [UIColor orangeColor];
-[UIApplication sharedApplication].delegate;
+#[UIApplication sharedApplication].delegate;
 ```
 
 **Not:**
