@@ -1,6 +1,6 @@
 # IOT Greenhouse
 
-THIS IS A COPY OF THE ORIGINAL REPO -> https://github.gatech.edu/tamechi3/4180_Project.git
+#### THIS IS A COPY OF THE ORIGINAL REPO -> https://github.gatech.edu/tamechi3/4180_Project.git
 
 - The [official documentation](https://docs.google.com/document/d/12XrbLskBRoRTIRZTQaoPVDgW_JzcDZ5-kt7HkfdbUTA/edit?usp=sharing) contains the parts list and implementation instructions.
 
