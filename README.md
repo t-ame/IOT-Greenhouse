@@ -2,7 +2,7 @@
 
 #### THIS IS A COPY OF THE ORIGINAL REPO -> https://github.gatech.edu/tamechi3/4180_Project.git
 
-- The [official documentation](https://docs.google.com/document/d/12XrbLskBRoRTIRZTQaoPVDgW_JzcDZ5-kt7HkfdbUTA/edit?usp=sharing) contains the parts list and implementation instructions.
+- The [official documentation](https://docs.google.com/document/d/12XrbLskBRoRTIRZTQaoPVDgW_JzcDZ5-kt7HkfdbUTA/edit?usp=sharing) contains the demo video [link](https://www.youtube.com/watch?v=RvQbsjxnbIE), parts list and implementation instructions.
 
 - The C++ code for the Mbed micro-controller can be found [here](https://os.mbed.com/users/tamechi3/code/Final_project). 
 
